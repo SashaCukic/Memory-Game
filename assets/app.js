@@ -14,7 +14,7 @@ require('bootstrap');
 
 $(document).ready(function() {
 
-    let totalCards = 4; // Nombre de cartes totales
+    let totalCards = 18; // Nombre de cartes totales
     let username = ''; // Nom du joueur
     let nbClicks = 0; // Nombre de clique du joueur
     let totalTime; // Temps total
