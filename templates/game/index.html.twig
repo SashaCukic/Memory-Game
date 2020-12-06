@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Main{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <section>
+        <div class="container">
+            <div class="text-center mb-5">
+                <h1 class="display-20 display-md-18 display-lg-16">Jeu de mémoire</h1>
+                <a href="{{ path('memory') }}" type="button" class="btn btn-primary" id="start-game">Jouer !</a>
+                <h2>Classement</h2>
+            </div>
+
+            {# FLASH MESSAGES #}
+            {% include "components/flash-messages.html.twig" %}
+
+            {# TABLEAU DES SCORES #}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Temps</th>
+                        <th scope="col">Nombre de clic</th>
+                        <th scope="col">Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% set position = 1 %} {# Incrément #}
+                    {% for player in players %} {# Boucler sur les players #}
+                        {% set time = 60 - player.time %} {# Récupération du temps écoulé #}
+
+                        {# PLAYER ROW #}
+                        {% include "components/player-row.html.twig" with {player:player, time:time, position:position} %}                        
+
+                        {% set position = position + 1 %}{# Incrément la position #}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>    
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

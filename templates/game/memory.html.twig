@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Game{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <section>
+        <div class="container-fluid">
+            <div class="text-center mb-5">
+                <h1 class="display-20 display-md-18 display-lg-16">Jeu de mémoire</h1>
+                <button type="button" class="btn btn-primary" id="start-game">Commencer !</button> {# CTA #}
+                <p id="timer">01:00</p> {# TIMER #}
+            </div>
+
+            {# PROGRESS BAR #}
+            <div class="progress mx-auto mb-2" style="max-width: 300px;">
+                <div class="progress-bar bg-success" role="progressbar" id="progressBar" style="width: 100%" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+
+            {# GAME #}
+            <div class="row memory-game">
+                {# Boucle for avec 2 itération pour générer 2 cartes #}
+                {% for i in 0..1 %}
+                    {# Boucler sur les cartes, avec un filtre custom "Shuffle" qui permet de mélanger l'array un première fois #}
+                    {% for card in cards|shuffle %}
+                        {# Inclure le composant memory-card #}
+                        {% include "components/memory-card.html.twig" with {card:card} %}
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    {# MODAL - Gagné #}
+    <div class="modal fade" id="usernameModal" tabindex="-1" role="dialog" aria-labelledby="usernameModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="usernameModalLabel">Félicitation !!</h5>
+                </div>
+                <div class="modal-body">
+                    <p>Veuillez renseigner votre prénom pour comparer votre score avec les autres participants</p>
+                    <div class="form-group">
+                        <label for="player-name" class="col-form-label">Votre nom :</label>
+                        <input type="text" class="form-control" id="player-name">
+                        <p id="player-name-error"></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="submit-username">Valider</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

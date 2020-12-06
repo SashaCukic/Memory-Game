@@ -1,0 +1,74 @@
+/* IMPORT BOOTSTRAP */
+
+$primary: #fffdd8;
+@import "~bootstrap/scss/bootstrap";
+
+/* GLOBAL */
+
+body {
+    background: rgb(47, 195, 167);
+    margin-top: 20px;
+}
+
+.table>tbody>tr.active>td {
+    color: #fffdd8;
+}
+
+
+/* CARD */
+
+.memory-game {
+    perspective: 1000px;
+    padding: 10px;
+}
+
+
+/* CARD */
+
+.flip-card {
+    background-color: transparent;
+    width: auto;
+    height: 200px;
+    position: relative;
+    margin-bottom: 5px;
+    transform: scale(1);
+    transform-style: preserve-3d;
+    transition: transform .5s;
+}
+
+.flip-card img {
+    width: auto;
+    height: 100%;
+    margin: 2px;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.flip-card.flip,
+.flip-card.win,
+.flip-card.disable {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    position: absolute;
+    border-radius: 5px;
+    background: rgb(41, 175, 149);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.flip-card-back {
+    transform: rotateY(180deg);
+}

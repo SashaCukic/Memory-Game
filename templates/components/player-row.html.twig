@@ -1,0 +1,7 @@
+<tr {{ playerId == player.id ? ' class="active"' : '' }}>
+    <td>{{ position }}</td>
+    <td>{{ player.username }}</td>
+    <td>{{ time }} {{ time > 1 ? 'secondes' : 'seconde' }}</td>
+    <td>{{ player.click }}</td>
+    <td>{{ player.createdAt|date('d/m/Y H:i:s') }}</td>
+</tr>
