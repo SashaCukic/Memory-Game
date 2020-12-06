@@ -2,6 +2,10 @@
 
 Memory Game - Procédure d'installation
 
+## Démo
+
+Démonstration : [ici](https://memory.cukicsasha.fr)
+
 ## Préparation
 
 Veuillez-suivre ces instructions pour lancer le projet
